@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<algorithm xmlns="http://www.w3schools.com"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3schools.com NewXMLSchema.xsd">
+	
+	<iterations>2000</iterations>
+
+	<construction>
+		<insertion name="bestInsertion"/>
+	</construction>
+	
+	<strategy>
+		<memory>1</memory>
+		<searchStrategies>
+			<searchStrategy name="randomRuinAndRecreate">
+				<selector name="selectBest"/>
+	  			<acceptor name="schrimpfAcceptance">  
+ 					<alpha>0.4</alpha>  
+  					<warmup>100</warmup> 
+  				</acceptor>
+				<modules>
+					<module name="ruin_and_recreate">
+					<ruin_and_recreate_group>
+						<ruin name="randomRuin">
+							<share>0.5</share>
+						</ruin>
+						<insertion name="bestInsertion"/>	
+					</ruin_and_recreate_group>					
+					</module>
+					
+				</modules>
+				<probability>0.5</probability>
+			</searchStrategy>
+			
+			<searchStrategy name="radialRuinAndRecreate">
+				<selector name="selectBest"/>
+				<acceptor name="schrimpfAcceptance"/>  
+				<modules>
+					<module name="ruin_and_recreate">
+					<ruin_and_recreate_group>
+						<ruin name="radialRuin">
+							<share>0.3</share>
+						</ruin>
+						<insertion name="bestInsertion"/>	
+					</ruin_and_recreate_group>				
+					</module>
+					
+				</modules>
+				<probability>0.5</probability>
+			</searchStrategy>
+			
+		</searchStrategies>		
+	</strategy>
+	
+
+</algorithm>

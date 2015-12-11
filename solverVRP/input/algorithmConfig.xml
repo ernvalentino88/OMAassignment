@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<algorithm xmlns="http://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3schools.com NewXMLSchema.xsd">
+    <maxIterations>102400</maxIterations>
+    <construction>
+        <insertion name="regretInsertion">
+            <considerFixedCosts weight="1.0">true</considerFixedCosts>
+            <allowVehicleSwitch>true</allowVehicleSwitch>
+        </insertion>
+    </construction>
+    <strategy>
+        <memory>2048</memory>
+        <searchStrategies>
+            <searchStrategy name="strategy_1">
+                <selector name="selectBest"/>
+                <acceptor name="greedyAcceptance_minVehFirst">
+                    <alpha>0.0</alpha>
+                    <warmup>0</warmup>
+                </acceptor>
+                <modules>
+                    <module name="ruin_and_recreate">
+                        <ruin_and_recreate_group>
+                            <ruin name="randomRuin">
+<share>0.5</share>
+                            </ruin>
+                            <insertion name="regretInsertion"/>
+                        </ruin_and_recreate_group>
+                    </module>
+                </modules>
+                <probability>1.0</probability>
+            </searchStrategy>
+            <searchStrategy name="strategy_2">
+                <selector name="selectRandomly"/>
+                <acceptor name="greedyAcceptance_minVehFirst">
+                    <alpha>0.0</alpha>
+                    <warmup>0</warmup>
+                </acceptor>
+                <modules>
+                    <module name="ruin_and_recreate">
+                        <ruin_and_recreate_group>
+                            <ruin name="radialRuin">
+<share>0.5</share>
+                            </ruin>
+                            <insertion name="bestInsertion"/>
+                        </ruin_and_recreate_group>
+                    </module>
+                </modules>
+                <probability>1.0</probability>
+            </searchStrategy>
+            <searchStrategy name="strategy_3">
+                <selector name="selectRandomly"/>
+                <acceptor name="acceptNewRemoveWorst">
+                    <alpha>0.0</alpha>
+                    <warmup>0</warmup>
+                </acceptor>
+                <modules>
+                    <module name="ruin_and_recreate">
+                        <ruin_and_recreate_group>
+                            <ruin name="radialRuin">
+<share>0.5</share>
+                            </ruin>
+                            <insertion name="regretInsertion"/>
+                        </ruin_and_recreate_group>
+                    </module>
+                </modules>
+                <probability>1.0</probability>
+            </searchStrategy>
+            <searchStrategy name="strategy_4">
+                <selector name="selectBest"/>
+                <acceptor name="greedyAcceptance">
+                    <alpha>0.0</alpha>
+                    <warmup>0</warmup>
+                </acceptor>
+                <modules>
+                    <module name="ruin_and_recreate">
+                        <ruin_and_recreate_group>
+                            <ruin name="randomRuin">
+<share>0.5</share>
+                            </ruin>
+                            <insertion name="bestInsertion"/>
+                        </ruin_and_recreate_group>
+                    </module>
+                </modules>
+                <probability>1.0</probability>
+            </searchStrategy>
+            <searchStrategy name="strategy_5">
+                <selector name="selectBest"/>
+                <acceptor name="acceptNewRemoveWorst">
+                    <alpha>0.0</alpha>
+                    <warmup>0</warmup>
+                </acceptor>
+                <modules>
+                    <module name="ruin_and_recreate">
+                        <ruin_and_recreate_group>
+                            <ruin name="randomRuin">
+<share>0.5</share>
+                            </ruin>
+                            <insertion name="bestInsertion"/>
+                        </ruin_and_recreate_group>
+                    </module>
+                </modules>
+                <probability>1.0</probability>
+            </searchStrategy>
+            <searchStrategy name="strategy_6">
+                <selector name="selectRandomly"/>
+                <acceptor name="greedyAcceptance">
+                    <alpha>0.0</alpha>
+                    <warmup>0</warmup>
+                </acceptor>
+                <modules>
+                    <module name="ruin_and_recreate">
+                        <ruin_and_recreate_group>
+                            <ruin name="radialRuin">
+<share>0.5</share>
+                            </ruin>
+                            <insertion name="bestInsertion"/>
+                        </ruin_and_recreate_group>
+                    </module>
+                </modules>
+                <probability>1.0</probability>
+            </searchStrategy>
+            <searchStrategy name="strategy_7">
+                <selector name="selectBest"/>
+                <acceptor name="greedyAcceptance">
+                    <alpha>0.0</alpha>
+                    <warmup>0</warmup>
+                </acceptor>
+                <modules>
+                    <module name="ruin_and_recreate">
+                        <ruin_and_recreate_group>
+                            <ruin name="randomRuin">
+<share>0.5</share>
+                            </ruin>
+                            <insertion name="regretInsertion"/>
+                        </ruin_and_recreate_group>
+                    </module>
+                </modules>
+                <probability>1.0</probability>
+            </searchStrategy>
+        </searchStrategies>
+    </strategy>
+</algorithm>
