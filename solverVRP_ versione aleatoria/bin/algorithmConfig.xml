@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><algorithm xmlns="http://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3schools.com algorithm_schema.xsd">
+
+	<iterations>1302</iterations><!-- alternative: <maxIterations>1024</maxIterations> or change #iterations -->
+
+	<!-- Possibly add:																		 		-->
+	<!-- <prematureBreak> name= ("time" || "iterations" || "variationCoefficient") </prematureBreak> -->
+	<!-- <terminationCriteria> name= ?"termination"?</terminationCriteria>							-->
+
+        <construction>
+            <insertion name="bestInsertion">
+                <considerFixedCosts weight="1.0">true</considerFixedCosts>
+				<!-- alternative: <considerFixedCosts weight="1.0">false</considerFixedCosts> or change weight (?from 0 to 1?) -->
+				<!-- Possibly add:																   -->
+				<!-- <level> name=("forwardLooking" || "memory")</level>-->
+				<!-- <allowVehicleSwitch>(0 or 1)</allowVehicleSwitch>-->
+				<!-- <experimental> name=("timeSlice" || "neighboringSlices")</experimental>-->
+            </insertion>
+        </construction>
+
+        <strategy>
+            <memory>1</memory>
+            <searchStrategies>
+
+                <searchStrategy name="randomRuinAndRecreate">
+                    <selector name="selectRandomly"/> <!-- alternative: <selector name="selectRandomly"/> -->
+                    <acceptor name="acceptNewRemoveFirst"/><!-- alternative: -->
+															<!-- <acceptor name="schrimpfAcceptance"/> -->
+															<!-- <acceptor name="experimentalSchrimpfAcceptance"/> -->
+															<!-- <acceptor name="acceptNewRemoveFirst"/> -->
+															<!-- <acceptor name="greedyAcceptance"/> -->
+															<!-- <acceptor name="greedyAcceptance_minVehFirst"/> -->
+                    <modules>
+                        <module name="ruin_and_recreate">
+                            <ruin name="randomRuin"> <!-- alternative: 	<ruin name="radialRuin"> -->
+                                <share>0.7629166247481353</share> <!-- alternative: <distance>?"euclidean"?</distance> or change share value (?from 0 to 1?) -->
+                            </ruin>
+                            <insertion name="bestInsertion"/> <!-- alternative: <insertion name="regretInsertion"/> -->
+                        </module>
+
+						<!-- alternative: 							-->
+						<!-- <module name="gendreau">				-->
+						<!--	<iterations>1024</iterations>		-->
+						<!--	<share>0.5</share>					-->
+						<!--	<ruin name="randomRuin">			-->
+						<!--		<share>0.5</share>				-->
+						<!--	</ruin>								-->
+						<!--	<insertion name="bestInsertion"/>	-->
+						<!-- </module>								-->
+
+                    </modules>
+                    <probability>0.7977780835385616</probability> <!-- alternative: Value from 0 to 1 -->
+                </searchStrategy>
+
+                <searchStrategy name="radialRuinAndRecreate">
+                    <selector name="selectBest"/>
+                    <acceptor name="acceptNewRemoveFirst"/>
+                    <modules>
+                        <module name="ruin_and_recreate">
+                            <ruin name="radialRuin">
+                                <share>0.40472529777197697</share>
+                            </ruin>
+                            <insertion name="regretInsertion"/>
+                        </module>
+                    </modules>
+                    <probability>0.2022219164614384</probability>
+                </searchStrategy>
+            </searchStrategies>
+        </strategy>
+
+
+    </algorithm>
