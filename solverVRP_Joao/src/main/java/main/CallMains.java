@@ -13,8 +13,8 @@
 public class CallMains {
 
     /////////////////////////////////////EDIT HERE//////////////////////////////////////////////
-    protected static double bestTotalMINError = 70.000;//%
-    protected static double upperBondErrorPercentage = 10.0;//%
+    protected static double bestTotalMEANError = 130.000;//%
+    protected static double upperBondErrorPercentage = 8.00;//%
     ////////////////////////////////////////////////////////////////////////////////////////////
 
     protected static int REPETITION_C = 10;
@@ -58,7 +58,8 @@ public class CallMains {
             /////////////////////////////////////EDIT HERE//////////////////////////////////////////////
 
             //Random Select  between (max & min) number of iterations
-            int max = 1536, min = 512;
+            //int max = 1536, min = 512;
+            int max = 10240, min = 200;
             int numberIterations = rand.nextInt((max - min) + 1) + min;
             String[] nIter = {"" + numberIterations + ""};
 
@@ -273,7 +274,7 @@ public class CallMains {
                     System.out.println("Abort! Repetition with too big error...");
                     String[] args = new String[0];
                     CallMains.main(args);
-                }else if(sumError > bestTotalMINError){
+                }else if(sumMeanError > bestTotalMEANError){
                     System.out.println("Abort! Total MIN Error Superior to what looking for...");
                     String[] args = new String[0];
                     CallMains.main(args);
@@ -330,7 +331,7 @@ public class CallMains {
                     fileTemp.renameTo(file2);
 
             }else{
-                System.out.println("File does not exists!");
+                System.out.println("File does not exist!");
             }
 
         }catch(IOException e){
