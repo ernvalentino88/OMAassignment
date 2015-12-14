@@ -1,13 +1,3 @@
+Total Time:	11118.06	Total MEAN Error:	73.258%	Total MIN Error:	33.474%
 
-Total Time:	3767.61	Total MEAN Error:	100.855%	Total MIN Error:	36.314%
-
-|1504
-|selectBest
-|acceptNewRemoveWorst
-|0.485470844345233
-|regretInsertion
-|0.7024190902875148
-|selectRandomly
-|greedyAcceptance
-|0.46017249028905827
-|regretInsertion
+2586|selectBest|greedyAcceptance|0.7464852680068291|regretInsertion|0.8150411528403184|selectRandomly|acceptNewRemoveWorst
