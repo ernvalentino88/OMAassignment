@@ -1,0 +1,13 @@
+Nella seconda parte dobbiamo imporre un numero di veicoli pari al 10%, 20% e 30% in più rispetto a quelli usati nella prima parte. Ad esempio se per un certo file nella prima parte abbiamo usato 10 veicoli, dovremo ora usarne 11, poi 12, poi 13.
+L’algoritmo di default cerca di usare meno veicoli possibile, quindi dobbiamo “obbligarlo” a usare più veicoli.
+Possiamo mettere un vincolo hard, usando come modello la classe HardSkillConstraint.java che si trova in jsprit.core.problem.constraint oppure l’esempio che c’è nelle slide Hits on SOA ecc… 
+Questo vincolo hard deve ad es ridurre la capacity del singolo veicolo, così che, siccome ogni veicolo può portare meno roba, l’algoritmo sarà costretto a usare più veicoli.
+Un’alternativa è ridurre il tempo max in cui ogni veicolo può stare in giro, sempre per ottenere lo stesso effetto.
+Se non vogliamo creare una nuova classe possiamo fare la stessa cosa andando nella funzione main, dove c’è il ciclo “for(int r=0; r<(int)options.get(CONSTANTS.REPETITION); r++)“. Dentro questo ciclo ne facciamo un altro in cui imponiamo le condizioni che vogliamo (quelle due di prima). Questo dovrebbe essere più semplice ma non ho capito benissimo come si fa, bisogna chiedere a Gobbato.
+Anche mettendo queste condizioni non siamo sicuri al 100% di ottenere dei risultati (per vedere se ci sono soluzioni o meno, nel main dobbiamo scrivere solutions.isEmpty() che ci restituisce il booleano x sapere se ha trovato soluzioni o no).
+Se non dovessimo trovare soluzioni così, dobbiamo modificare direttamente il metaeuristico, soprattuto la rebuild, ma a quanto mi ha detto Gobbato questa è “l’ultima spiaggia” e speriamo di non doverci arrivare.
+
+Per fare questa roba dobbiamo avere delle info sui tempi dei singoli veicoli, per poterli diminuire. Queste info si trovano usando l’analyzer (c’è nelle slide Hits on SOA) che ha i getter che restituiscono total distance, waiting time, service time ecc… Bisogna capire quale di questi (o somma di questi) tempi è il tempo in cui ogni veicolo sta in giro. Potremmo ad es trovare il max di questi tempi e imporre che sia il 20% più basso (consiglio di Gobbato).
+
+Oggi io e Joao abbiamo implementato l’analyzer (in realtà il modello c’è già, l’abbiamo solo usato) e cercato di capirci qualcosa su cosa significhino questi tempi. Il codice dovrebbe metterlo su Github lui credo.
+
