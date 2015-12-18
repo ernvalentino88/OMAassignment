@@ -85,7 +85,7 @@ public class Main {
 			System.out.println("Total Cost: "+totalCost);
 									
 			// Print solution on a file
-			//OROutils.write(solution, (String)options.get(PARAMS.INSTANCE), System.currentTimeMillis()-startTime, (String)options.get(CONSTANTS.OUTPUT));
+			OROutils.write(solution, (String)options.get(PARAMS.INSTANCE), System.currentTimeMillis()-startTime, (String)options.get(CONSTANTS.OUTPUT));
 			// Print solution on the screen (optional)
 			//SolutionPrinter.print(vrp, solution, SolutionPrinter.Print.VERBOSE);
 			// Draw solution on the screen (optional)
